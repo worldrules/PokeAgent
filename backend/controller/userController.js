@@ -1,5 +1,5 @@
 
-import User from "../model/userModel"
+import User from "../model/userModel.js"
 
 export const create = async (req, res) => {
     try {
