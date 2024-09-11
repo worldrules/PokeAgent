@@ -19,7 +19,25 @@ export const create = async (req, res) => {
 
 export const fetch = async (req, res) => {
     try {
-        res.json("Hello World")
+        const users = await User.find();
+        if (users.length === 0) {
+            res.status(404).json({ message: "User not found." })
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error." })
+    }
+}
+
+export const update = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const userExist = await User.findOne({ _id: id });
+        if (!userExist) {
+            return res.status(404).json({ message: "User not found." })
+        }
+        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true });
+        res.status(200).json(updatedUser);
     } catch (error) {
         res.status(500).json({ error: "Internal server error." })
     }
