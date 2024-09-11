@@ -1,8 +1,9 @@
+import Dashboard from "@/components/Dashboard";
 
 export default function Home() {
   return (
-    <main>
-      <span className="text-2xl">page</span>
+    <main className="max-w-7xl mx-auto">
+      <Dashboard />
     </main>
   );
 }
