@@ -4,9 +4,13 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { PokemonCard } from './PokemonCard';
 
-export function PokemonGrid() {
-    const [searchText, setSearchText] = useState("");
+interface PokemonGridProps {
+    pokemonList: unknown
+}
 
+export function PokemonGrid(pokemonList: PokemonGridProps) {
+    const [searchText, setSearchText] = useState("");
+    console.log(pokemonList)
 
     return (
         <>
