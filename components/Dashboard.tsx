@@ -18,19 +18,19 @@ const Dashboard = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
-            <div className="">
+            <div className="flex">
                 <Image
                     src="/pikachu.png"
                     alt="Pikachu"
-                    width={400}
-                    height={400}
+                    width={200}
+                    height={200}
                 />
             </div>
             {session ? (
                 <>
                     <img
                         src={session.user?.image as string}
-                        className="rounded-full h-20 w-20"
+                        className="rounded-full h-20 w-20 mt-10"
                         alt=""
                     />
                     <h1 className="text-3xl text-green-500 font-bold">
