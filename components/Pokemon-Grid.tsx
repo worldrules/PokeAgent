@@ -34,18 +34,19 @@ export function PokemonGrid() {
         fetchTypeColors();
     }, []);
 
-    const filteredPokemon = pokemon
-        .filter((name) => {
+    const filteredPokemon = searchText || selectedType
+        ? pokemon.filter((name) => {
             const matchesName = name.toLowerCase().includes(searchText.toLowerCase());
             const matchesType = selectedType ? pokemonTypeColors[name] === typeColors[selectedType] : true;
             return matchesName && matchesType;
-        });
+        })
+        : [];
 
     const handleTypeClick = (type: string | null) => {
         if (type) {
-            router.push(`/type/${type}`);  // Redirecione para a página do tipo
+            router.push(`/type/${type}`);
         } else {
-            router.push('/');  // Volta para a página inicial (ou uma página de todos os Pokémon)
+            router.push('/');
         }
     };
 
