@@ -4,6 +4,7 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { PokemonCard } from './PokemonCard';
 import { usePokemonList } from '@/lib/pokemonAPI';
+import Image from 'next/image';
 
 
 export function PokemonGrid() {
@@ -20,9 +21,8 @@ export function PokemonGrid() {
     return (
         <>
             <div>
-                <h3 className='text-2xl py-6 text-center'>Search for your Pokemon!</h3>
-                <div className='grid w-full max-w-sm items-center gap-1.5'>
-                    <Label htmlFor='pokemonName'>Pokemon Name</Label>
+                <div className='w-full max-w-sm items-center gap-1.5 mx-auto flex flex-col text-center'>
+                    <Label htmlFor='pokemonName'>Nome do Pokemon</Label>
                     <Input
                         autoComplete='off'
                         type='text'
@@ -31,7 +31,9 @@ export function PokemonGrid() {
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)} />
                 </div>
-                <h3 className='text-3xl pt-12 pb-6 text-center'>Pokemon Collection</h3>
+                <div className="flex justify-center items-center py-8">
+                    <Image src="/pokeapi.png" alt="subtitulo" width={200} height={200} />
+                </div>
             </div>
 
             <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
