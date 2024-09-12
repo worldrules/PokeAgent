@@ -72,7 +72,7 @@ export function PokemonGrid() {
                         {Object.keys(typeColors).map((type) => (
                             <span
                                 key={type}
-                                className="text-white px-4 py-2 rounded-full text-xs font-semibold cursor-pointer"
+                                className="text-white px-4 py-2 rounded-full text-xs font-semibold cursor-pointer transition-transform transform hover:scale-105"
                                 style={{ backgroundColor: typeColors[type] || '#FFFFFF' }}
                                 onClick={() => handleTypeClick(type)}
                             >
@@ -80,7 +80,7 @@ export function PokemonGrid() {
                             </span>
                         ))}
                         <span
-                            className="text-white px-4 py-2 rounded-full text-xs font-semibold cursor-pointer bg-gray-500"
+                            className="text-white px-4 py-2 rounded-full text-xs font-semibold cursor-pointer bg-gray-500 transition-transform transform hover:scale-125"
                             onClick={() => handleTypeClick(null)}
                         >
                             All Types
