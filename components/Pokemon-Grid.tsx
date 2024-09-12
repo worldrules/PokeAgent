@@ -3,14 +3,19 @@ import { useState } from 'react'
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { PokemonCard } from './PokemonCard';
+import { usePokemonList } from '@/lib/pokemonAPI';
 
-interface PokemonGridProps {
-    pokemonList: unknown
-}
 
-export function PokemonGrid(pokemonList: PokemonGridProps) {
+export function PokemonGrid() {
     const [searchText, setSearchText] = useState("");
-    console.log(pokemonList)
+    const pokemon = usePokemonList();
+
+    const filteredPokemon = searchText
+        ? pokemon.filter((name) =>
+            name.toLowerCase().includes(searchText.toLowerCase())
+        )
+        : [];
+
 
     return (
         <>
@@ -29,10 +34,16 @@ export function PokemonGrid(pokemonList: PokemonGridProps) {
                 <h3 className='text-3xl pt-12 pb-6 text-center'>Pokemon Collection</h3>
             </div>
 
-            <div className='mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left'>
-                <PokemonCard name="Pikachu" />
-                <PokemonCard name="Pikachu" />
-                <PokemonCard name="Pikachu" />
+            <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+                {filteredPokemon.length > 0 ? (
+                    filteredPokemon.map((name, index) => (
+                        <PokemonCard key={index} name={name} />
+                    ))
+                ) : (
+                    <p className="text-center w-full col-span-4 font-semibold">
+                        Inicie a busca pelo nome de um Pokemon
+                    </p>
+                )}
             </div>
         </>
     )
