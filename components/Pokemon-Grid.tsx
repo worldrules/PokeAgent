@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 export function PokemonGrid() {
     const [searchText, setSearchText] = useState("");
-    const [selectedType, setSelectedType] = useState<string | null>(null);
+    const [selectedType] = useState<string | null>(null);
     const [typeColors, setTypeColors] = useState<{ [key: string]: string }>({});
     const pokemon = usePokemonList();
     const router = useRouter();
