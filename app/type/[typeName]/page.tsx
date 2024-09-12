@@ -41,7 +41,7 @@ const TypePage = ({ params }: { params: { typeName: string } }) => {
                             key={pokemon.name}
                             href={`/pokemon/${pokemon.name}`}
                         >
-                            <Link href={`/${pokemon.name}`} className="block bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden transform hover:scale-90 transition-transform duration-300"
+                            <Link href={`/pokemon/${pokemon.name}`} className="block bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden transform hover:scale-90 transition-transform duration-300"
                                 style={{ width: '180px', height: '250px' }}
                             >
                                 <div className="relative w-full h-3/4">
