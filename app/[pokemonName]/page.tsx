@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { PokemonClient, Pokemon } from "pokenode-ts";
-import { pokemonTypeColors } from "@/lib/pokemonTypeColors";
+// import { pokemonTypeColors } from "@/lib/pokemonTypeColors";
 import { useRouter } from "next/navigation";
 
 const PokemonPage = ({ params }: { params: { pokemonName: string } }) => {
@@ -43,7 +43,7 @@ const PokemonPage = ({ params }: { params: { pokemonName: string } }) => {
                             <span
                                 key={t.type.name}
                                 className="text-white px-2 py-1 rounded-full text-xs font-semibold cursor-pointer"
-                                style={{ backgroundColor: pokemonTypeColors[t.type.name] || '#FFFFFF' }}
+                                // style={{ backgroundColor: pokemonTypeColors[t.type.name] || '#FFFFFF' }}
                                 onClick={() => router.push(`/type/${t.type.name}`)}
                             >
                                 {t.type.name}

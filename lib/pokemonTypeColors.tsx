@@ -1,4 +1,3 @@
-import { PokemonClient } from "pokenode-ts";
 
 export const pokemonTypeColors: { [key: string]: string } = {
     bug: '#A8B820',
@@ -24,7 +23,7 @@ export const pokemonTypeColors: { [key: string]: string } = {
 
 
 
-const api = new PokemonClient();
+// const api = new PokemonClient();
 
 export async function getPokemonColorByType(type: string): Promise<string> {
     const colors: { [key: string]: string } = {
