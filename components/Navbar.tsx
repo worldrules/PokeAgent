@@ -33,12 +33,12 @@ const Navbar = () => {
                 <div className={`md:flex md:items-center ${isOpen ? "block" : "hidden"} w-full md:w-auto`}>
                     <ul className="flex flex-col md:flex-row md:space-x-4 mt-4 md:mt-0 text-white">
                         <li>
-                            <Link href="/profile" className="hover:text-gray-300">
+                            <Link href="/pages/profile" className="hover:text-gray-300">
                                 Meu Perfil
                             </Link>
                         </li>
                         <li>
-                            <Link href="/favorites" className="hover:text-gray-300">
+                            <Link href="/pages/stars" className="hover:text-gray-300">
                                 Favoritos
                             </Link>
                         </li>

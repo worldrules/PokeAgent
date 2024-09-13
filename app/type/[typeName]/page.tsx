@@ -17,6 +17,10 @@ const TypePage = ({ params }: { params: { typeName: string } }) => {
         const fetchPokemonsByType = async () => {
             try {
                 const response = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data: ${response.status}`);
+                }
+
                 const data = await response.json();
                 if (data.pokemon) {
                     const allPokemons = data.pokemon.map((p: { pokemon: { name: string; url: string } }) => p.pokemon);
@@ -63,7 +67,14 @@ const TypePage = ({ params }: { params: { typeName: string } }) => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {pokemonList.map((pokemon) => {
                             const isFavorite = favorites.includes(pokemon.name);
-                            const pokemonId = pokemon.url.split('/')[6];
+                            const pokemonId = pokemon.url.split('/')[6]; // Extrai o ID do Pokémon da URL
+
+                            // Verificação de ID válida
+                            if (!pokemonId || isNaN(Number(pokemonId))) {
+                                console.error(`Invalid Pokemon ID: ${pokemonId} for ${pokemon.name}`);
+                                return null;
+                            }
+
                             return (
                                 <div
                                     key={pokemon.name}
@@ -78,6 +89,9 @@ const TypePage = ({ params }: { params: { typeName: string } }) => {
                                                 layout="fill"
                                                 objectFit="contain"
                                                 className="absolute inset-0"
+                                                onError={(e) => {
+                                                    (e.target as HTMLImageElement).src = "/path/to/placeholder.png"; // Define uma imagem padrão se o carregamento falhar
+                                                }}
                                             />
                                         </div>
                                         <div className="p-4 text-center">
