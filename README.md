@@ -56,6 +56,7 @@ Insira um gif ou um link de alguma demonstração
 - Paginação ✔️
 - Favoritos ✔️
 - Meu Perfil ✔️
+- Paginas dinamicas de Pokemons por Tipo ✔️
 
 **Extras**
 - Configuração NODE e MongoDB ✔️
