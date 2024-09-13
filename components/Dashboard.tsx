@@ -45,7 +45,7 @@ const Dashboard = () => {
 
                 if (loginResponse.status === 200) {
                     alert('Login bem-sucedido!');
-                    // Aqui você pode lidar com a sessão ou redirecionar o usuário conforme necessário
+                    signIn('Credentials')
                 } else {
                     alert('Falha ao fazer login.');
                 }

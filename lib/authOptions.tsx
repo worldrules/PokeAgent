@@ -1,8 +1,27 @@
 import { NextAuthOptions } from "next-auth";
-
+import mongoose from "mongoose";
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcryptjs';
+
+
+
+const connectToDatabase = async () => {
+
+
+
+
+    if (mongoose.connection.readyState === 1) {
+        return mongoose.connection;
+    }
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    return mongoose.connection;
+};
+
+const verifyPassword = async (password: string, hashedPassword: string) => {
+    return bcrypt.compare(password, hashedPassword);
+};
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -17,22 +36,18 @@ export const authOptions: NextAuthOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                email: { label: 'Email', type: 'text', placeholder: 'Ash Ketchum 🌝' },
+                username: { label: 'Username', type: 'text', placeholder: 'Ash Ketchum 🌝' },
                 password: { label: 'Password', type: 'password', placeholder: '••••••••••••••••••' },
             },
             async authorize(credentials) {
                 const client = await connectToDatabase();
-                const usersCollection = client.db().collection('users');
-
-                // Encontrar usuário pelo e-mail
-                const user = await usersCollection.findOne({ email: credentials?.email });
+                const user = await User.findOne({ username: credentials?.username }).exec();
 
                 if (!user) {
                     client.close();
                     throw new Error('No user found!');
                 }
 
-                // Verificar se a senha está correta
                 const isValid = await verifyPassword(credentials!.password, user.password);
 
                 if (!isValid) {
@@ -41,7 +56,7 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 client.close();
-                return { id: user._id.toString(), email: user.email };
+                return { id: user._id.toString(), username: user.username };
             },
         }),
     ],
