@@ -65,6 +65,13 @@ Insira um gif ou um link de alguma demonstração
 
 
 ## FAQ
+#### Observações , decisões e outros
+Primeiramente queria agradecer pela oportunidade de fazer o teste, sem dúvida foi o qual eu mais me empenhei. Comecei com a parte de autenticação , logo em seguida tive coragem de pegar backend junto
+isso já me possibilitou a aprender diversas coisas , foi então que eu encarei a questão do websocket, percebi que pra fazer do jeito que eu queria com JWT , autenticação , usuarios inteligados com Banco de Dados 
+tudo isso 100% , iria ser muito desafiador acabei encarando , naturalmente não foi a melhor escola , assumo ! fiquei muitas horas nessa parte, eu fiz muito disso no backend ta quase pronto na verdade mais tive que me render
+eu to mais de 18 horas acordado mas não só por isso , realmente tive um pouco de dificuldade de interligar com frontend , mas foi feito muita coisa no backend e banco de dados tudo funcionando certinho , inclusive a troca de mensagens
+e conversa entre usuarios , só nao tem tela pra isso, mas existe a máquina ** , depois de todas essas horas fiquei com medo pois faltava muita coisa do frontend , mas graças a deus fui conseguindo ajustar pra que ficasse tudo certinho
+e cumprir o esperado das tasks e a ideia central era entregar em menos tempo. Mas foi uma ótima experiencia !!
 
 #### Rodando o Projeto
 
