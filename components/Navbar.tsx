@@ -58,7 +58,7 @@ const Navbar = () => {
                             </li>
                         ) : (
                             <li>
-                                <Link href="/api/auth/signin" className="hover:text-gray-300">
+                                <Link href="/api/auth/login" className="hover:text-gray-300">
                                     Entrar
                                 </Link>
                             </li>
