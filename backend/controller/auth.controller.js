@@ -43,20 +43,49 @@ export const signup = async (req, res) => {
                 profilePic: newUser.profilePic
             });
         } else {
-            res.status(500).json({ message: 'Failed to create user' });
+            res.status(500).json({ error: 'Failed to create user' });
         }
 
     } catch (error) {
-        console.log('Error in signup: ', error.message);
-        res.status(500).json({ message: error.message });
+        console.log('Error in Signup Controller: ', error.message);
+        res.status(500).json({ error: error.message });
     }
 };
 
 
-export const login = (req, res) => {
-    console.log('loginUser');
+
+export const login = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        const isPasswordValid = await bcrypt.compare(password, user?.password || "");
+        if (!user || !isPasswordValid) {
+            return res.status(400).json({ error: 'Invalid username or password' });
+        }
+
+        generateTokenAndSetCookie(user._id, res);
+
+        res.status(200).json({
+            _id: user._id,
+            fullName: user.fullName,
+            username: user.username,
+            gender: user.gender,
+            profilePic: user.profilePic
+        })
+    } catch (error) {
+        console.log('Error in Login Controller: ', error.message);
+        res.status(500).json({ error: error.message });
+
+    }
 };
 
-export const logout = (req, res) => {
-    console.log('logoutUser');
+export const logout = async (req, res) => {
+    try {
+        res.cookie("jwt", "", { maxAge: 0 })
+        res.status(200).json({ message: 'Logged out successfully' });
+
+    } catch (error) {
+        console.log('Error in Logout Controller: ', error.message);
+        res.status(500).json({ error: error.message });
+    }
 };
