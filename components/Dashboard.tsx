@@ -3,18 +3,11 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 
 
 const Dashboard = () => {
-    const router = useRouter()
-
     const { data: session } = useSession();
-
-    const handleRegister = () => {
-        router.push('/register');
-    };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
@@ -60,12 +53,6 @@ const Dashboard = () => {
                         className="border border-black rounded-lg bg-green-400 px-5 py-1"
                     >
                         Entrar com GitHub 🖥️
-                    </button>
-                    <button
-                        onClick={handleRegister}
-                        className="border border-black rounded-lg bg-purple-400 px-5 py-1"
-                    >
-                        Criar Conta ✨
                     </button>
                 </div>
             )}
