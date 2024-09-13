@@ -52,6 +52,7 @@ Insira um gif ou um link de alguma demonstração
 - Busca por Pokemon ✔️ (Por Tipo ou Por Busca)
 - Lista de Resultados ✔️
 - Detalhes do Pokemon ✔️
+- Deploy Vercel ✔️
 - Navegação ✔️
 - Paginação ✔️
 - Favoritos ✔️
